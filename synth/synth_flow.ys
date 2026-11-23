@@ -1,0 +1,28 @@
+#============================================================================
+# synth_flow.ys - Yosys synthesis script for the streaming FIR accelerator
+#============================================================================
+# Generic (liberty-free) logic synthesis of the top module fir_filter.
+# Runs RTL elaboration, logic synthesis passes and technology mapping, then
+# reports cell statistics.  The ABC gate-level optimization is deliberately
+# skipped: with TAPS=16 parallel 36-bit multipliers the full `abc -dff`
+# boolean-optimization run takes far too long for a regression harness, and
+# the technology-mapped statistics below already capture the resource
+# structure (multipliers, adders, registers).  run_all.py checks for the
+# ===SYNTH_OK=== sentinel and treats any failure as a FAIL.
+
+read_verilog -sv rtl/fir_arith.sv rtl/fir_control.sv rtl/fir_filter.sv
+hierarchy -check -top fir_filter
+
+proc
+flatten
+opt
+fsm
+opt
+techmap
+opt
+
+# resource report
+stat
+
+# deterministic sentinel consumed by run_all.py
+log "===SYNTH_OK==="

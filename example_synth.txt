@@ -1,0 +1,8 @@
+Yosys 0.70+240 (oss-cad-suite 2026-10-27), flow: synth/synth_flow.ys
+Target: fir_filter (TAPS=16, DW=CW=16, S1.15, ROUND=1, SAT=1)
+Technology-mapped cell statistics:
+  1365   $_SDFFE_PN0P_   (flip-flops)
+ 20734   $_AND_          36   $_MUX_    37   $_NOT_
+  7671   $_OR_         16039   $_XOR_
+    16   $meminit_v2      16   $memrd    (coefficient ROM reads, one per tap)
+=> ~44.5k logic gates total, 1365 FFs. Run time ~5 s. No ABC/place-and-route.

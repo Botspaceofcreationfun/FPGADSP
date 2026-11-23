@@ -1,0 +1,11 @@
+rtl/fir_arith.sv:158: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+INFO: scenario file=sim/vectors/impulse.exp expected outputs=395
+INFO: cycles=415 accepted=400 pushed=395 expected=395
+RESULT: PASS
+--- first 6 impulse-response taps (S1.15, expected 2048 each for the MA) ---
+1024
+1024
+1024
+1024
+1024
+1024
